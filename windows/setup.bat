@@ -4,7 +4,6 @@ title GPT Image 2 详情图切列高清器 0.9 - 安装
 
 echo ============================================
 echo   GPT Image 2 详情图切列高清器 0.9
-echo   内部使用 请勿外传
 echo ============================================
 echo.
 
@@ -56,9 +55,18 @@ if not exist "%~dp0venv" (
 echo.
 call "%~dp0venv\Scripts\activate.bat"
 
+if exist "%~dp0wheels\basicsr-fix.zip" (
+    if exist "%~dp0wheels\*.whl" (
+        goto install_offline
+    )
+)
+
+goto install_online
+
+:install_offline
 echo [2/3] 安装所有依赖（本地文件，无需联网）...
 
-pip install --no-index --find-links="%~dp0wheels" torch torchvision opencv-python-headless tqdm addict future lmdb Pillow pyyaml requests scikit-image scipy
+python -m pip install --no-index --find-links="%~dp0wheels" torch torchvision opencv-python-headless tqdm addict future lmdb Pillow pyyaml requests scikit-image scipy
 if %errorlevel% neq 0 (
     echo [错误] 依赖安装失败
     pause
@@ -67,19 +75,55 @@ if %errorlevel% neq 0 (
 
 echo.
 echo [3/3] 安装 basicsr + realesrgan...
-pip install --no-deps "%~dp0wheels\basicsr-fix.zip"
+python -m pip install --no-deps "%~dp0wheels\basicsr-fix.zip"
 if %errorlevel% neq 0 (
     echo [错误] basicsr 安装失败
     pause
     exit /b 1
 )
 
-pip install --no-index --find-links="%~dp0wheels" --no-deps realesrgan
+python -m pip install --no-index --find-links="%~dp0wheels" --no-deps realesrgan
 if %errorlevel% neq 0 (
     echo [错误] realesrgan 安装失败
     pause
     exit /b 1
 )
+
+goto install_done
+
+:install_online
+echo [2/3] 安装所有依赖（联网下载）...
+python -m pip install --upgrade pip
+if %errorlevel% neq 0 (
+    echo [错误] pip 更新失败
+    pause
+    exit /b 1
+)
+
+python -m pip install torch torchvision opencv-python-headless tqdm addict future lmdb Pillow pyyaml requests scikit-image scipy numpy
+if %errorlevel% neq 0 (
+    echo [错误] 依赖安装失败，请检查网络
+    pause
+    exit /b 1
+)
+
+echo.
+echo [3/3] 安装 basicsr + realesrgan...
+python -m pip install https://github.com/Disty0/BasicSR/archive/refs/heads/master.zip
+if %errorlevel% neq 0 (
+    echo [错误] basicsr 安装失败，请检查网络
+    pause
+    exit /b 1
+)
+
+python -m pip install --no-deps realesrgan
+if %errorlevel% neq 0 (
+    echo [错误] realesrgan 安装失败，请检查网络
+    pause
+    exit /b 1
+)
+
+:install_done
 
 echo.
 echo ============================================

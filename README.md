@@ -21,6 +21,14 @@ GitHub 仓库名：`gpt-image2-detail-slicer`
 - `放入图片/`：拖入待处理图片
 - `处理结果/`：输出切列和超分后的图片
 
+## Release 下载建议
+
+GitHub Release 建议按平台下载，不需要下载源码压缩包。
+
+- `GPT-Image2-Detail-Slicer-v0.9.0-mac.zip`：macOS 包，内置模型，安装依赖时需要联网。
+- `GPT-Image2-Detail-Slicer-v0.9.0-windows-online.zip`：Windows 小包，内置模型，安装依赖时需要联网。
+- `GPT-Image2-Detail-Slicer-v0.9.0-windows-offline-full.zip`：Windows 离线完整包，内置模型和离线依赖，文件较大。
+
 ## 使用
 
 ### macOS
@@ -50,10 +58,10 @@ GitHub 仓库名：`gpt-image2-detail-slicer`
 
 ## 大文件说明
 
-GitHub 普通仓库不适合直接提交大模型和离线 Python wheels。本仓库默认不包含：
+GitHub 普通仓库不适合直接提交大模型和离线 Python wheels。完整可运行包放在 GitHub Release 中，源码仓库默认不包含：
 
 - `mac/models/*.pth`
 - `windows/models/*.pth`
 - `windows/wheels/*`
 
-本地运行或打包离线版时，需要把 `RealESRGAN_x4plus.pth` 放入对应的 `models/` 目录，并按平台准备依赖文件。
+如果只下载源码，需要把 `RealESRGAN_x4plus.pth` 放入对应的 `models/` 目录。Windows 离线版还需要准备 `windows/wheels/` 依赖文件；Windows 在线版可由 `setup.bat` 联网安装依赖。

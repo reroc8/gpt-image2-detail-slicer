@@ -29,4 +29,4 @@ python3 -c "import cv2, torch, numpy, realesrgan, torchvision, tqdm, basicsr.arc
 }
 
 echo ""
-echo "双击 开始处理v2.command 启动"
+echo "双击 开始处理.command 启动"

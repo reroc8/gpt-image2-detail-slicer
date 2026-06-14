@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+.venv/
+venv/
+
+# Runtime folders
+mac/放入图片/*
+mac/处理结果/*
+windows/放入图片/*
+windows/处理结果/*
+
+# Large binary assets are distributed separately.
+mac/models/*
+windows/models/*
+windows/wheels/*
+
+!.gitkeep

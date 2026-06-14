@@ -1,4 +1,4 @@
-电商详情图切割AI高清化处理 0.9
+GPT Image 2 详情图切列高清器 0.9
 
 安装:
   1. 安装 Python 3.14 https://www.python.org/downloads/

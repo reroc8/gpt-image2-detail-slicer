@@ -1,5 +1,5 @@
 """
-电商详情图切割AI高清化处理 0.9 - 自适应列检测
+GPT Image 2 详情图切列高清器 0.9 - 自适应列检测
 自动识别列数，精准切在间隙处，去白边
 """
 
@@ -210,7 +210,7 @@ def main():
     OUTPUT.mkdir(parents=True, exist_ok=True)
 
     print("=" * 50)
-    print("  电商详情图切割AI高清化处理 0.9")
+    print("  GPT Image 2 详情图切列高清器 0.9")
     print("  自适应列检测 · 去白边 · 4x超分")
     print("  内部使用 请勿外传")
     print("=" * 50)

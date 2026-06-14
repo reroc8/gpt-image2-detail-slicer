@@ -1,4 +1,6 @@
-# 电商详情图切割 AI 高清化处理
+# GPT Image 2 详情图切列高清器
+
+GitHub 仓库名：`gpt-image2-detail-slicer`
 
 用于切割并高清化由 GPT Image 2 生成的电商详情图。
 

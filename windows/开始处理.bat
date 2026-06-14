@@ -9,5 +9,5 @@ if not exist "%~dp0venv\Scripts\python.exe" (
 )
 
 call "%~dp0venv\Scripts\activate.bat"
-python "%~dp0watch_v2.py"
+python "%~dp0watch.py"
 pause

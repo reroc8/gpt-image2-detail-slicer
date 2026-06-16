@@ -31,14 +31,12 @@ def init_upsampler():
         sys.exit(1)
     mdl = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=SCALE)
     if torch.cuda.is_available():
-        dev = torch.device("cuda")
         print(f"  CUDA: {torch.cuda.get_device_name(0)}")
     else:
-        dev = torch.device("cpu")
         print("  CPU")
     return RealESRGANer(scale=SCALE, model_path=str(MODEL), model=mdl,
                         tile=TILE, tile_pad=10, pre_pad=0,
-                        half=torch.cuda.is_available(), device=dev)
+                        half=torch.cuda.is_available())
 
 
 def detect_columns(img):
